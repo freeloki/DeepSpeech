@@ -64,7 +64,7 @@ def main():
         'pandas',
         'requests',
         'numba == 0.47.0', # ships py3.5 wheel
-        'llvmlite == 0.31.0', # for numba==0.47.0
+        'llvmlite == 0.32.1', # for numba==0.47.0
         'librosa',
         'soundfile',
     ]
@@ -73,9 +73,7 @@ def main():
         'ds_ctcdecoder == {}'.format(version)
     ]
 
-    tensorflow_pypi_dep = [
-        'tensorflow == 1.15.2'
-    ]
+    
 
     # Due to pip craziness environment variables are the only consistent way to
     # get options into this script when doing `pip install`.
@@ -93,7 +91,7 @@ def main():
     if os.environ.get('DS_NOTENSORFLOW', ''):
         install_requires = install_requires
     else:
-        install_requires = install_requires + tensorflow_pypi_dep
+        install_requires = install_requires
 
     setup(
         name='deepspeech_training',
